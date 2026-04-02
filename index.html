@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>DigiAgency | Комплексный интернет-маркетинг</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            border-bottom: 1px solid #eef2f6;
+            padding: 18px 0;
+            transition: all 0.2s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f2b3d, #1e5a7d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #2c7da0;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e2f3e;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #2c7da0;
+        }
+
+        .btn-outline {
+            border: 1.5px solid #2c7da0;
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #2c7da0;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #2c7da0;
+            color: white;
+            border-color: #2c7da0;
+        }
+
+        .btn-primary {
+            background: #2c7da0;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 8px 20px rgba(44,125,160,0.2);
+        }
+
+        .btn-primary:hover {
+            background: #1f5e7a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(44,125,160,0.3);
+        }
+
+        .burger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #1e2f3e;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 100px;
+            background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #e2f0f5;
+            color: #2c7da0;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #0f2b3d;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2c7da0;
+        }
+
+        .hero-visual {
+            flex: 0.9;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400"><rect width="500" height="400" fill="%23eef2ff" rx="24"/><circle cx="150" cy="120" r="40" fill="%232c7da0" opacity="0.2"/><circle cx="350" cy="280" r="60" fill="%232c7da0" opacity="0.15"/><path d="M120 280 L200 200 L280 260 L350 180 L420 240" stroke="%232c7da0" stroke-width="3" fill="none" stroke-dasharray="4 4"/><rect x="180" y="300" width="140" height="20" rx="10" fill="%232c7da0" opacity="0.3"/></svg>') no-repeat center;
+            background-size: contain;
+            min-height: 300px;
+        }
+
+        /* Sections general */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 56px;
+            color: #0f2b3d;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #4b5565;
+            max-width: 700px;
+            margin: -32px auto 56px;
+        }
+
+        /* Services cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 24px;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eef2f8;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #cbdde9;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.8rem;
+            color: #2c7da0;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        /* About section */
+        .about-wrap {
+            display: flex;
+            gap: 56px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 36px;
+            margin: 32px 0;
+        }
+
+        .about-stats div h4 {
+            font-size: 2.2rem;
+            color: #2c7da0;
+        }
+
+        .about-image {
+            flex: 1;
+            background: #d9e9f0;
+            border-radius: 32px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #2c7da0;
+        }
+
+        /* Cases */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            border: 1px solid #edf2f7;
+        }
+
+        .case-card:hover {
+            transform: scale(1.02);
+        }
+
+        .case-img {
+            background: #eef2ff;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #2c7da0;
+        }
+
+        .case-info {
+            padding: 24px;
+        }
+
+        .case-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .result {
+            color: #2c7da0;
+            font-weight: 700;
+            margin-top: 12px;
+            display: inline-block;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonial {
+            background: #fafcff;
+            border-radius: 28px;
+            padding: 32px;
+            border: 1px solid #eef2fa;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .testimonial i {
+            color: #2c7da0;
+            font-size: 2rem;
+            opacity: 0.4;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin: 16px 0;
+        }
+
+        .client {
+            font-weight: 700;
+            margin-top: 16px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 48px;
+            border-radius: 40px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f8;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 60px;
+            border: 1px solid #cfdfe9;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        textarea {
+            border-radius: 28px;
+            resize: vertical;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #2c7da0;
+            box-shadow: 0 0 0 3px rgba(44,125,160,0.1);
+        }
+
+        .contact-form button {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f2b3d;
+            color: #cbd5e6;
+            padding: 56px 0 32px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-col a, .footer-col p {
+            color: #b9ccdd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .social-icons i {
+            font-size: 1.5rem;
+            margin-right: 16px;
+            transition: 0.2s;
+            color: #b9ccdd;
+        }
+
+        .social-icons i:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #254f66;
+            padding-top: 32px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 32px 24px;
+                gap: 24px;
+                box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+                border-bottom: 1px solid #eef2f6;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .burger {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .hero-content p {
+                max-width: 100%;
+            }
+            .hero-grid {
+                flex-direction: column;
+            }
+            .section-title {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px;
+            }
+            .contact-form {
+                padding: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container nav-container">
+        <div class="logo">Digi<span>Agency</span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="#services">Услуги</a>
+            <a href="#about">О нас</a>
+            <a href="#cases">Кейсы</a>
+            <a href="#testimonials">Отзывы</a>
+            <a href="#contact" class="btn-outline">Связаться</a>
+        </div>
+        <div class="burger" id="burgerMenu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-chart-line"></i> Топ-агентство 2025</div>
+                <h1>Рост продаж через <br> интернет-маркетинг</h1>
+                <p>SEO, контекст, SMM, таргет — стратегии, которые приносят реальные деньги. Доверьтесь профессионалам.</p>
+                <a href="#contact" class="btn-primary">Бесплатная консультация →</a>
+                <div class="hero-stats">
+                    <div class="stat-item"><h3>150+</h3><span>проектов</span></div>
+                    <div class="stat-item"><h3>98%</h3><span>удовлетворённых клиентов</span></div>
+                    <div class="stat-item"><h3>5 лет</h3><span>на рынке</span></div>
+                </div>
+            </div>
+            <div class="hero-visual"></div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Что мы делаем</h2>
+            <div class="section-sub">Полный спектр услуг для вашего бизнеса в digital-среде</div>
+            <div class="services-grid">
+                <div class="service-card"><div class="service-icon"><i class="fas fa-chart-simple"></i></div><h3>SEO-продвижение</h3><p>Вывод в ТОП, стабильный органический трафик и рост лидов.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-ad"></i></div><h3>Контекстная реклама</h3><p>Яндекс.Директ и Google Ads с окупаемостью до 400%.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fab fa-instagram"></i></div><h3>SMM & таргет</h3><p>Ведение соцсетей, настройка таргетированной рекламы.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>Разработка сайтов</h3><p>Лендинги, интернет-магазины, корпоративные порталы.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>Веб-аналитика</h3><p>Настройка сквозной аналитики и дашбордов.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-envelope-open-text"></i></div><h3>Email-маркетинг</h3><p>Прогретые базы, автоматизация рассылок.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="background-color: #f9fdfe;">
+        <div class="container about-wrap">
+            <div class="about-text">
+                <h3>Почему бизнес выбирает DigiAgency</h3>
+                <p>Мы не просто маркетинговое агентство — мы стратегические партнёры, которые отвечают за результат. Команда из 30+ экспертов, data-driven подход и прозрачная отчётность.</p>
+                <div class="about-stats">
+                    <div><h4>43+</h4><span>специалиста</span></div>
+                    <div><h4>12 лет</h4><span>совокупного опыта</span></div>
+                    <div><h4>2.3x</h4><span>средний ROMI</span></div>
+                </div>
+                <a href="#contact" class="btn-primary" style="margin-top: 12px;">Обсудить проект</a>
+            </div>
+            <div class="about-image">
+                <i class="fas fa-chalkboard-user"></i>  стратегия
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases -->
+    <section id="cases">
+        <div class="container">
+            <h2 class="section-title">Кейсы и результаты</h2>
+            <div class="section-sub">Реальные цифры, которыми мы гордимся</div>
+            <div class="cases-grid">
+                <div class="case-card"><div class="case-img"><i class="fas fa-store"></i></div><div class="case-info"><h3>Интернет-магазин техники</h3><p>SEO + контекст: рост органики на 210%, увеличение выручки на 78% за 5 месяцев.</p><span class="result">+210% трафика</span></div></div>
+                <div class="case-card"><div class="case-img"><i class="fas fa-graduation-cap"></i></div><div class="case-info"><h3>Образовательная платформа</h3><p>Комплексный маркетинг: таргет + email — регистраций +140% при бюджете -15%.</p><span class="result">+140% лидов</span></div></div>
+                <div class="case-card"><div class="case-img"><i class="fas fa-hotel"></i></div><div class="case-info"><h3>Сеть отелей</h3><p>Реклама в соцсетях + отзывы: загрузка отелей выросла на 63% за квартал.</p><span class="result">ROAS 5.2x</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" style="background: #fefefe;">
+        <div class="container">
+            <h2 class="section-title">Нас рекомендуют</h2>
+            <div class="section-sub">Мнения клиентов о сотрудничестве</div>
+            <div class="testimonials-grid">
+                <div class="testimonial"><i class="fas fa-quote-left"></i><p>«Агентство переработало стратегию продвижения, и уже через месяц заявки выросли вдвое. Очень грамотные аналитики.»</p><div class="client">— Анна К., CEO LamodaStyle</div></div>
+                <div class="testimonial"><i class="fas fa-quote-left"></i><p>«Полностью доверили DigiAgency SEO и контекст. Результат — стабильный рост продаж на 54% за полгода. Прозрачные отчёты, супер!»</p><div class="client">— Дмитрий В., основатель «ТехноГипер»</div></div>
+                <div class="testimonial"><i class="fas fa-quote-left"></i><p>«SMM-продвижение подняло узнаваемость бренда, а таргет дал охваты +300%. Обязательно продолжим работать.»</p><div class="client">— Екатерина М., бренд одежды LOOK</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact form -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Готовы обсудить проект?</h2>
+            <div class="section-sub">Оставьте заявку, и наш маркетолог свяжется с вами в течение 2 часов</div>
+            <div class="contact-form">
+                <form id="callbackForm">
+                    <div class="form-group"><input type="text" id="name" placeholder="Ваше имя" required></div>
+                    <div class="form-group"><input type="email" id="email" placeholder="Email или телефон" required></div>
+                    <div class="form-group"><textarea rows="3" id="message" placeholder="Расскажите о задаче..."></textarea></div>
+                    <button type="submit" class="btn-primary">Отправить →</button>
+                </form>
+                <p style="font-size: 0.8rem; text-align: center; margin-top: 24px; color:#5b6e8c;"><i class="fas fa-lock"></i> Ваши данные защищены. Никакого спама.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>DigiAgency</h4><p>Агентство интернет-маркетинга полного цикла. Рост продаж, брендинг, аналитика.</p><div class="social-icons"><i class="fab fa-telegram"></i><i class="fab fa-instagram"></i><i class="fab fa-linkedin-in"></i><i class="fab fa-vk"></i></div></div>
+            <div class="footer-col"><h4>Услуги</h4><a href="#">SEO-продвижение</a><a href="#">Контекстная реклама</a><a href="#">SMM & таргет</a><a href="#">Разработка сайтов</a></div>
+            <div class="footer-col"><h4>Контакты</h4><p><i class="fas fa-phone-alt"></i> +7 (495) 123-45-67</p><p><i class="fas fa-envelope"></i> hello@digiagency.ru</p><p><i class="fas fa-map-marker-alt"></i> Москва, Цифровое шоссе, 12</p></div>
+        </div>
+        <div class="copyright">© 2025 DigiAgency — интернет-маркетинг, который приносит прибыль.</div>
+    </div>
+</footer>
+
+<script>
+    // burger menu toggle
+    const burger = document.getElementById('burgerMenu');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    // close menu after link click (mobile)
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // form submit handler
+    const form = document.getElementById('callbackForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            if (!name || !email) {
+                alert('Пожалуйста, заполните имя и контактные данные.');
+                return;
+            }
+            alert(`Спасибо, ${name}! Ваша заявка принята. Наш менеджер свяжется с вами в ближайшее время.`);
+            form.reset();
+        });
+    }
+
+    // optional: nav background change on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.navbar');
+        if (window.scrollY > 20) {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.02)';
+        } else {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.96)';
+            header.style.boxShadow = 'none';
+        }
+    });
+</script>
+</body>
+</html>
